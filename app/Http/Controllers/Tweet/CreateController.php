@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Tweet;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tweet;
+use App\Http\Requests\Tweet\CreateRequest;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class CreateController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -14,11 +14,9 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke(CreateRequest $request)
     {
-        //投稿した内容を一覧表示
-        $tweets = Tweet::all();
-        return view('tweet.index')
-            ->with('tweets', $tweets);
+        //投稿を作成する
+
     }
 }
