@@ -19,6 +19,6 @@ class IndexController extends Controller
     {
         $tweetId = (int) $request->route('tweetId');
         $tweet = Tweet::where('id', $tweetId)->firstOrFail();
-        dd($tweet);
+        return view('tweet.update')->with('tweet', $tweet);
     }
 }
