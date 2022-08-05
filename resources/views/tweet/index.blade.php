@@ -11,22 +11,24 @@
 <body>
     <h1>TUBUYAKU</h1>
     <!-- 投稿するフォーム -->
-    <div>
-        <p>投稿</p>
-        @if (session('feedback.success'))
-            <p style="color: cadetblue">{{ session('feedback.success') }}</p>
-        @endif
-        <form action="{{ route('tweet.create') }}" method="post">
-            @csrf
-            <label for="tweet-content">つぶやき</label>
-            <span>140文字まで</span>
-            <textarea name="tweet" id="tweet-conten" type="text" placeholder="つぶやきを入力"></textarea>
-            @error('tweet')
-                <p style="color: red;">{{ $message }}</p>
-            @enderror
-            <button type="submit">投稿する</button>
-        </form>
-    </div>
+    @auth
+        <div>
+            <p>投稿</p>
+            @if (session('feedback.success'))
+                <p style="color: cadetblue">{{ session('feedback.success') }}</p>
+            @endif
+            <form action="{{ route('tweet.create') }}" method="post">
+                @csrf
+                <label for="tweet-content">つぶやき</label>
+                <span>140文字まで</span>
+                <textarea name="tweet" id="tweet-conten" type="text" placeholder="つぶやきを入力"></textarea>
+                @error('tweet')
+                    <p style="color: red;">{{ $message }}</p>
+                @enderror
+                <button type="submit">投稿する</button>
+            </form>
+        </div>
+    @endauth
     <!-- 一覧表示 -->
     <div>
         @foreach ($tweets as $tweet)
