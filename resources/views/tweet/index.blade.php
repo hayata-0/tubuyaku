@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tubuyaku</title>
+    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <script src="{{ mix('/js/app.js') }}"></script>
 </head>
 
 <body>
@@ -51,4 +53,14 @@
     </div>
 </body>
 
-</html>
+</html> --}}
+
+<x-layout title="TOP | Tubuyaku">
+    <x-layout.single>
+        <h2 class=" text-center text-blue-500 text-4xl font-bold mt-8 mb-8">
+            Tubuyaku
+        </h2>
+        <x-tweet.form.post></x-tweet.form.post>
+        <x-tweet.list :tweets="$tweets"></x-tweet.list>
+    </x-layout.single>
+</x-layout>
