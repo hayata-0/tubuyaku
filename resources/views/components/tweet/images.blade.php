@@ -40,7 +40,7 @@
                     </button>
                 </div>
                 <div class="p-2">
-                    <img :src="imgModal" :alt="imgModalSrc" class=" object-contain h-1/2-screen">
+                    <img :src="imgModalSrc" :alt="imgModalSrc" class=" object-contain h-1/2-screen">
                 </div>
             </div>
         </div>
