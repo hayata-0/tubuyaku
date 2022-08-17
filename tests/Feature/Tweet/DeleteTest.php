@@ -19,6 +19,42 @@ class DeleteTest extends TestCase
      * @return void
      */
 
+
+    public function test_login_status()
+    {
+        $response = $this->get('/login');
+        $response->assertStatus(200);
+    }
+
+    public function test_register_status()
+    {
+        $response = $this->get('/register');
+        $response->assertStatus(200);
+    }
+
+    public function test_forgotpassword_status()
+    {
+        $response = $this->get('/forgot-password');
+        $response->assertStatus(200);
+    }
+
+    public function test_tweet_status()
+    {
+        $response = $this->get('/tweet');
+        $response->assertStatus(200);
+    }
+
+    public function test_update_status()
+    {
+        $user = User::factory()->create();
+        $tweet = Tweet::factory()->create(['user_id' => $user->id]);
+        $this->actingAs($user);
+        $response = $this->get('/tweet/update/' . $tweet->id);
+        $response->assertStatus(200);
+    }
+
+
+
     public function test_delete_successed()
     {
         $user = User::factory()->create();
