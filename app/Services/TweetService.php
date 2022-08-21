@@ -26,9 +26,12 @@ class TweetService
             $tweet->content = $content;
             $tweet->save();
             foreach ($images as $image) {
-                Storage::putFile('public/images', $image);
+                // Storage::putFile('public/images', $image);
+                //s3にファイルをアップロード
+                $path = Storage::disk('s3')->put('/', $image);
                 $imageModel = new Image();
-                $imageModel->name = $image->hashName();
+                // $imageModel->name = $image->hashName();
+                $imageModel->name = $path;
                 $imageModel->save();
                 $tweet->images()->attach($imageModel->id);
             }
