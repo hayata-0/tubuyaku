@@ -40,7 +40,7 @@ class DeleteTest extends TestCase
 
     public function test_tweet_status()
     {
-        $response = $this->get('/tweet');
+        $response = $this->get('/tweets');
         $response->assertStatus(200);
     }
 
@@ -61,6 +61,6 @@ class DeleteTest extends TestCase
         $tweet = Tweet::factory()->create(['user_id' => $user->id]);
         $this->actingAs($user);
         $response = $this->delete('/tweet/delete/' . $tweet->id);
-        $response->assertRedirect('/tweet');
+        $response->assertRedirect('/tweets');
     }
 }

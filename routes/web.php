@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 //Tweet
-Route::get('/tweet', \App\Http\Controllers\Tweet\IndexController::class)
+Route::get('/tweets', \App\Http\Controllers\Tweet\IndexController::class)
     ->name('tweet.index');
 
 Route::middleware('auth')->group(function () {
